@@ -2,9 +2,10 @@
   "name": "@flightpkg/registry",
   "version": "1.0.0",
   "description": "Registry for flightpkg.",
-  "main": "main.js",
+  "main": "./api/index.js",
   "scripts": {
-    "start": "nodemon main.js"
+    "start": "nodemon ./api/index.js",
+    "deploy": "vercel"
   },
   "repository": "https://github.com/flightpkg/registry.git",
   "author": "DevComp <hi@devcomp.tk>",
@@ -15,6 +16,7 @@
     "express": "^4.18.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "vercel": "^25.0.0"
   }
 }

@@ -8,15 +8,22 @@ async function fetchdata(url) {
     return Promise.resolve(data)
 }
 
+
 app.get('/js', (req, res) => {
+    res.setHeader('Content-Type', 'text/json');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     fetchdata('https://registry.yarnpkg.com').then(r => res.send(r))
 })
 
 app.get('/js/:pkg', (req, res) => {
+    res.setHeader('Content-Type', 'text/json');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     fetchdata(`https://registry.yarnpkg.com/${req.params.pkg}`).then(r => res.send(r))
 })
 
 app.get('/js/:name/-/:name-:version.tgz', (req, res) => {
+    res.setHeader('Content-Type', 'text/json');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     res.redirect(`https://registry.yarnpkg.com/${req.params.name}/-/${req.params.name}-${req.params.version}.tgz`)
 })
 
